@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Bienvenido</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        .calculator {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .calculator-row {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+        .calculator button {
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            flex: 1;
+        }
+        #result {
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: calc(100% - 20px);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Bienvenido</h2>
+    <button onclick="cerrarSesion()">Cerrar sesion</button>
+    
+    <div class="calculator">
+        <div id="result"></div>
+        <div class="calculator-row">
+            <button onclick="addToResult('1')">1</button>
+            <button onclick="addToResult('2')">2</button>
+            <button onclick="addToResult('3')">3</button>
+        </div>
+        <div class="calculator-row">
+            <button onclick="addToResult('4')">4</button>
+            <button onclick="addToResult('5')">5</button>
+            <button onclick="addToResult('6')">6</button>
+        </div>
+        <div class="calculator-row">
+            <button onclick="addToResult('7')">7</button>
+            <button onclick="addToResult('8')">8</button>
+            <button onclick="addToResult('9')">9</button>
+        </div>
+        <div class="calculator-row">
+            <button onclick="addToResult('+')">+</button>
+            <button onclick="addToResult('0')">0</button>
+            <button onclick="addToResult('-')">-</button>
+        </div>
+        <div class="calculator-row">
+            <button onclick="addToResult('*')">*</button>
+            <button onclick="clearResult()">C</button>
+            <button onclick="calculateResult()">=</button>
+        </div>
+        <div class="calculator-row">
+            <button onclick="addToResult('/')">/</button>
+        </div>
+    </div>
+</div>
+
+<script src="login.js"></script>
+<script>
+    let result = document.getElementById('result');
+
+    function addToResult(value) {
+        result.innerHTML += value;
+    }
+
+    function clearResult() {
+        result.innerHTML = '';
+    }
+
+    function calculateResult() {
+        try {
+            result.innerHTML = eval(result.innerHTML);
+        } catch (error) {
+            result.innerHTML = 'Error';
+        }
+    }
+</script>
+</body>
+</html>
